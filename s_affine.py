@@ -16,7 +16,7 @@ def affine_encrypt(slope,intercept):
 
 def affine_decrypt(slope,intercept):
 
-#TODO: doesn't work, read up on modulo inverse function and/or euclidean algorithm to finish
+#TODO: doesn't work, read up on modulo inverse function and/or euclidean algorithm to finish 
 
     ptext = str()
     ctext = input("Enter ciphertext: ").upper()

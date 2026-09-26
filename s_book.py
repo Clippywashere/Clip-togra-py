@@ -1,7 +1,7 @@
 import random
 
 def book_encrypt():
-    #TODO: make the selector truly random for marginally better security
+    #TODO: Make the selector truly random for marginally better security
 
     words_list = list()
     key = input("Enter key text: ").upper() + " "

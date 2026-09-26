@@ -46,7 +46,7 @@ def columnar_encrypt():
     print(ctext)
 
 def columnar_decrypt():
-    #TODO: Write decryption function
+    #TODO: Write decryption function 
     ctext = input("Enter ciphertext: ").upper()
     ptext = str()
     p1text = str()
