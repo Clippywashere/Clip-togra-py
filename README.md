@@ -20,7 +20,7 @@ Frequency analyzer and Frequency matcher
 
 ## Dependencies
 
-Python inbuilt module math
+Python inbuilt modules math and random
 
 ### Roadmap (TODO)
 
