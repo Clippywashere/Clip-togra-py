@@ -19,30 +19,19 @@ path_choice = int(input("Enter choice. 1 for encryption, 2 for decryption, 3 for
 if path_choice == 1:
     type_choice = int(input("Enter choice. 1 for substitution, 2 for transposition, 3 for mixed, 4 for other: "))
     if type_choice == 1:
-        cipher_choice = int(input("Enter choice. 1 for morse, 2 for affine, 3 for atbash, 4 for caesar, 5 for ROT13, 6 for tapcode, 7 for playfair, 8 for book, 9 for nihilist: "))
+        cipher_choice = int(input("Enter choice. 1 for morse, 2 for affine, 3 for tapcode, 4 for playfair, 5 for book, 6 for nihilist: "))
         match cipher_choice:
             case 1:
                 s_morse.morse_encrypt()
             case 2:
-                slope = int(input("Enter slope: "))
-                if math.gcd(slope,26) != 1:
-                    raise Exception('Invalid slope')
-                intercept = int(input("Enter intercept: "))
-                s_affine.affine_encrypt(slope,intercept)
+                s_affine.affine_encrypt()
             case 3:
-                s_affine.affine_encrypt(25,25)
-            case 4:
-                key = int(input("Enter key: "))
-                s_affine.affine_encrypt(1,key)
-            case 5:
-                s_affine.affine_encrypt(1,13)
-            case 6:
                 s_tapcode.tapcode_encrypt()
-            case 7:
+            case 4:
                 s_playfair.playfair_encrypt()
-            case 8:
+            case 5:
                 s_book.book_encrypt()
-            case 9:
+            case 6:
                 s_nihilist.nihilist_encrypt()
             case _:
                 print("Invalid cipher choice")
@@ -70,30 +59,19 @@ if path_choice == 1:
 elif path_choice == 2:
     type_choice = int(input("Enter choice. 1 for substitution, 2 for transposition, 3 for mixed, 4 for other: "))
     if type_choice == 1:
-        cipher_choice = int(input("Enter choice. 1 for morse, 2 for affine, 3 for atbash, 4 for caesar, 5 for ROT13, 6 for tapcode, 7 for playfair, 8 for book, 9 for nihilist: "))
+        cipher_choice = int(input("Enter choice. 1 for morse, 2 for affine, 3 for tapcode, 4 for playfair, 5 for book, 6 for nihilist: "))
         match cipher_choice:
             case 1:
                 s_morse.morse_decrypt()
             case 2:
-                slope = int(input("Enter slope: "))
-                if math.gcd(slope,26) != 1:
-                    raise Exception('Invalid slope')
-                intercept = int(input("Enter intercept: "))
-                s_affine.affine_decrypt(slope,intercept)
+                pass
             case 3:
-                s_affine.affine_decrypt(25,25)
-            case 4:
-                key = int(input("Enter key: "))
-                s_affine.affine_decrypt(1,key)
-            case 5:
-                s_affine.affine_decrypt(1,13)
-            case 6:
                 s_tapcode.tapcode_decrypt()
-            case 7:
+            case 4:
                 s_playfair.playfair_decrypt()
-            case 8:
+            case 5:
                 s_book.book_decrypt()
-            case 9:
+            case 6:
                 s_nihilist.nihilist_decrypt()
             case _: print("Invalid cipher choice")
     elif type_choice == 2:
