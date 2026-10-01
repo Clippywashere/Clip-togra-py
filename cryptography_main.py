@@ -64,7 +64,7 @@ elif path_choice == 2:
             case 1:
                 s_morse.morse_decrypt()
             case 2:
-                pass
+                s_affine.affine_decrypt()
             case 3:
                 s_tapcode.tapcode_decrypt()
             case 4:
