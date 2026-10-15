@@ -1,20 +1,21 @@
 # Clip-togra-py?
 
-Clip-togra-py is a cryptography multitool used to encrypt and decrypt various classical ciphers (also includes a few useful tools)
+Clip-togra-py is a CLI-based cryptography multitool used to encrypt and decrypt various classical ciphers (also includes a few useful tools)
 
 ## Description
 
-Clip-togra-py can handle the encryption and decryption of various classical ciphers when the method and relevant keys are known (it is in essence multiple encrypters and decrypters combined into one multitool!) 
+Clip-togra-py can handle the encryption and decryption of various classical ciphers when the method and relevant information is known (it is in essence multiple encrypters and decrypters combined into one multitool!) 
 
-WARNING: Classical Ciphers are NOT adequate for real-life security applications and must NOT be used to protectany important information
+WARNING: Classical Ciphers are NOT adequate for real-life security applications and must NOT be used to protect any important information.
 
-## Dependencies
+## Dependencies and Requirements
 
 Python inbuilt modules math and random
+Python 3.10+ (Match cases)
 
 ## Contributions
 
-NO contributions are accepted as this is a solo project to learn more about both Cryptography and Programming
+NO contributions are accepted as this is a solo project to learn more about both Cryptography and Programming.
 
 ## Supported ciphers:
 
@@ -26,7 +27,7 @@ Pseudomorse (self-created obfuscation cipher)
 
 ## Available tools:
 
-Frequency analyzer and Frequency matcher(Heuristic)
+Frequency analyzer and Frequency matcher (Heuristic)
 
 ### Roadmap (TODO)
 
