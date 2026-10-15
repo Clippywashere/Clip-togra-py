@@ -1,4 +1,4 @@
-from constructors import polybiussquare_constructor
+from constructors_and_validators import polybiussquare_constructor, polybius_input_validator
 
 def nihilist_encrypt():
     polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
@@ -9,21 +9,8 @@ def nihilist_encrypt():
     key_numbers = list()
     ctext = str()
 
-    for i in ptext:
-        if i == excluded_letter:
-            ptext_25 += replacement_letter
-        elif i == " ":
-            pass
-        else:
-            ptext_25 += i
-
-    for i in key:
-        if i == excluded_letter:
-            key_25 += replacement_letter
-        elif i == " ":
-            pass
-        else:
-            key_25 += i
+    ptext_25 = polybius_input_validator(ptext,excluded_letter,replacement_letter)
+    key_25 = polybius_input_validator(key,excluded_letter,replacement_letter)
 
     for i in key_25:
         for j in polybiussquare:
@@ -49,13 +36,7 @@ def nihilist_decrypt():
     ptext = str()
     temp = str()
 
-    for i in key:
-        if i == excluded_letter:
-            key_25 += replacement_letter
-        elif i == " ":
-            pass
-        else:
-            key_25 += i
+    key_25 = polybius_input_validator(key,excluded_letter,replacement_letter)
 
     for i in key_25:
         for j in polybiussquare:

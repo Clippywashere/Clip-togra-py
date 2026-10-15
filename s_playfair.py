@@ -1,4 +1,4 @@
-from constructors import polybiussquare_constructor
+from constructors_and_validators import polybiussquare_constructor, polybius_input_validator
 
 def playfair_encrypt():
     polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
@@ -8,13 +8,7 @@ def playfair_encrypt():
     c1text_list = list()
     cftext = str()
 
-    for i in ptext:
-        if i == excluded_letter:
-            ptext_25 += replacement_letter
-        elif i == " ":
-            pass
-        else:
-            ptext_25 += i
+    ptext_25 = polybius_input_validator(ptext,excluded_letter,replacement_letter)
 
     for i in range(len(ptext_25) -1):
         if ptext_25[i] == ptext_25[i +1]:

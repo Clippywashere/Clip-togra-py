@@ -1,4 +1,4 @@
-from constructors import alphabet_constructor
+from constructors_and_validators import alphabet_constructor, input_validator
 import math
 
 def affine_encrypt():
@@ -8,7 +8,9 @@ def affine_encrypt():
     global intercept
     alpha_capital = alphabet_constructor()
     ctext = str()
-    ptext = input("Enter plaintext: ").upper()
+    ptext = input("Enter plaintext: ")
+
+    ptext = input_validator(ptext)
 
     match affine_choice:
         case 1:
@@ -44,7 +46,9 @@ def affine_decrypt():
     ptext = str()
     slope_inverse = {1:1,3:9,5:21,7:15,9:3,11:19,15:7,17:23,19:11,21:5,23:17}
 
-    ctext = input("Enter ciphertext: ").upper()
+    ctext = input("Enter ciphertext: ")
+
+    ctext = input_validator(ctext)
 
     match affine_choice:
         case 1:

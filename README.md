@@ -32,7 +32,7 @@ Frequency analyzer and Frequency matcher (Heuristic)
 ### Roadmap (TODO)
 
 1. Decryption function for Columnar Transposition
-2. Standardizing methods across files (including input validation)
+2. Standardizing methods across files
 3. Simplifying the choice based UI (not exactly much of a UI rn)
 4. Adding support for more classical ciphers (ADFGX, Rail fence, Double Transposition etc.)
 5. Adding support for chaining ciphers

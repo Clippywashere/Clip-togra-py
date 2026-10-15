@@ -64,3 +64,24 @@ def polybiussquare_constructor():
             polybiussquare[i].append(alpha_25[j + 5*i])
     
     return polybiussquare, excluded_letter, replacement_letter
+
+def input_validator(inp):
+    out = str()
+    inp = inp.upper()
+    for i in inp:
+        if i.isalpha():
+            out += i
+
+    return out
+
+def polybius_input_validator(inp,excluded_letter,replacement_letter):
+    out = str()
+    inp = inp.upper()
+    for i in inp:
+        if i.isalpha():
+            if i == excluded_letter:
+                out += replacement_letter
+            else:
+                out += i
+
+    return out
