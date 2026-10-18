@@ -48,7 +48,7 @@ def playfair_encrypt():
                     cftext += polybiussquare[first_letter_row_index][second_letter_col_index] +polybiussquare[second_letter_row_index][first_letter_col_index]
                     first_letter_row_index = int(5)
 
-    print(cftext)
+    return cftext
 
 def playfair_decrypt():
     polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
@@ -85,4 +85,4 @@ def playfair_decrypt():
                     pftext += polybiussquare[first_letter_row_index][second_letter_col_index] +polybiussquare[second_letter_row_index][first_letter_col_index]
                     first_letter_row_index = int(5)
         
-    print(pftext)
+    return pftext

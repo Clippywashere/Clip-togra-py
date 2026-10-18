@@ -43,7 +43,7 @@ def columnar_encrypt():
     for i in transposed_grid:
         ctext += i[1:]
 
-    print(ctext)
+    return ctext
 
 def columnar_decrypt():
     #TODO: Write decryption function 

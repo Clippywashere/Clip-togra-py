@@ -22,7 +22,8 @@ def bifid_encrypt():
 
     for j in range(0,len(c2text),2):
         cftext += polybiussquare[int(c2text[j]) -1][int(c2text[j +1]) -1]
-    print(cftext)
+    
+    return cftext
 
 def bifid_decrypt():
     polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
@@ -37,4 +38,5 @@ def bifid_decrypt():
 
     for j in range(int(len(p1text)/2)):
         pftext += polybiussquare[int(p1text[j]) -1][int(p1text[j +int(len(p1text)/2)]) -1]
-    print(pftext)
+    
+    return pftext

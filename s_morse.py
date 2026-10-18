@@ -10,7 +10,7 @@ def morse_encrypt():
         elif i == " ":
             ctext += "  "
 
-    print(ctext)
+    return ctext
 
 def morse_decrypt():
     #TODO: refactor to make it cleaner
@@ -35,4 +35,4 @@ def morse_decrypt():
             count = 0
     ptext += morse_alpha[temp]
 
-    print(ptext)
+    return ptext

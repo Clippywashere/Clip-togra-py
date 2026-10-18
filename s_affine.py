@@ -35,7 +35,7 @@ def affine_encrypt():
         else:
             pass
 
-    print(ctext)
+    return ctext
 
 def affine_decrypt():
 
@@ -73,4 +73,4 @@ def affine_decrypt():
         else:
             pass
 
-    print(ptext)
+    return ptext

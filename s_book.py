@@ -37,7 +37,7 @@ def book_encrypt():
                     filtered_list.append(j)
             ctext += str(words_list.index(random.choice(filtered_list)) +1) + " "
 
-    print(ctext)
+    return ctext
 
 def book_decrypt():
     words_list = list()
@@ -72,4 +72,4 @@ def book_decrypt():
         else:
             ptext += words_list[i -1][0]
 
-    print(ptext)
+    return ptext

@@ -1,7 +1,6 @@
 #cryptography main
 
 ab_capital = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-import math
 
 import s_morse
 import s_affine
@@ -22,38 +21,38 @@ if path_choice == 1:
         cipher_choice = int(input("Enter choice. 1 for morse, 2 for affine, 3 for tapcode, 4 for playfair, 5 for book, 6 for nihilist: "))
         match cipher_choice:
             case 1:
-                s_morse.morse_encrypt()
+                print(s_morse.morse_encrypt())
             case 2:
-                s_affine.affine_encrypt()
+                print(s_affine.affine_encrypt())
             case 3:
-                s_tapcode.tapcode_encrypt()
+                print(s_tapcode.tapcode_encrypt())
             case 4:
-                s_playfair.playfair_encrypt()
+                print(s_playfair.playfair_encrypt())
             case 5:
-                s_book.book_encrypt()
+                print(s_book.book_encrypt())
             case 6:
-                s_nihilist.nihilist_encrypt()
+                print(s_nihilist.nihilist_encrypt())
             case _:
                 print("Invalid cipher choice")
     elif type_choice == 2:
         cipher_choice = int(input("Enter choice. 1 for columnar: "))
         match cipher_choice:
             case 1:
-                t_columnar.columnar_encrypt()
+                print(t_columnar.columnar_encrypt())
             case _:
                 print("Invalid cipher choice")
     elif type_choice == 3:
         cipher_choice = int(input("Enter choice. 1 for bifid: "))
         match cipher_choice:
             case 1:
-                m_bifid.bifid_encrypt()
+                print(m_bifid.bifid_encrypt())
             case _:
                 print("Invalid cipher choice")
     elif type_choice == 4:
         cipher_choice = int(input("Enter choice. 1 for pseudomorse: "))
         match cipher_choice:
             case 1:
-                o_pseudomorse.pseudomorse_encrypt()
+                print(o_pseudomorse.pseudomorse_encrypt())
             case _: print("Invalid cipher choice")
     else: print("Invalid type choice")
 elif path_choice == 2:
@@ -62,17 +61,17 @@ elif path_choice == 2:
         cipher_choice = int(input("Enter choice. 1 for morse, 2 for affine, 3 for tapcode, 4 for playfair, 5 for book, 6 for nihilist: "))
         match cipher_choice:
             case 1:
-                s_morse.morse_decrypt()
+                print(s_morse.morse_decrypt())
             case 2:
-                s_affine.affine_decrypt()
+                print(s_affine.affine_decrypt())
             case 3:
-                s_tapcode.tapcode_decrypt()
+                print(s_tapcode.tapcode_decrypt())
             case 4:
-                s_playfair.playfair_decrypt()
+                print(s_playfair.playfair_decrypt())
             case 5:
-                s_book.book_decrypt()
+                print(s_book.book_decrypt())
             case 6:
-                s_nihilist.nihilist_decrypt()
+                print(s_nihilist.nihilist_decrypt())
             case _: print("Invalid cipher choice")
     elif type_choice == 2:
         pass
@@ -80,14 +79,14 @@ elif path_choice == 2:
         cipher_choice = int(input("Enter choice. 1 for bifid: "))
         match cipher_choice:
             case 1:
-                m_bifid.bifid_decrypt()
+                print(m_bifid.bifid_decrypt())
             case _:
                 print("Invalid cipher choice")
     elif type_choice == 4:
         cipher_choice = int(input("Enter choice. 1 for pseudomorse: "))
         match cipher_choice:
             case 1:
-                o_pseudomorse.pseudomorse_decrypt()
+                print(o_pseudomorse.pseudomorse_decrypt())
             case _: print("Invalid cipher choice")
     else: print("Invalid type choice")
 elif path_choice == 3:

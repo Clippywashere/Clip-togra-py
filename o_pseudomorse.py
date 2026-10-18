@@ -33,7 +33,7 @@ def pseudomorse_encrypt():
             cftext += " "
             c1text = c1text[n:]
 
-    print(cftext)
+    return cftext
 
 def pseudomorse_decrypt():
     p1text = str()
@@ -47,4 +47,4 @@ def pseudomorse_decrypt():
     for j in range(0,int(len(p1text)/8)):
         pftext += chr(int(p1text[8*j:8*(j +1)],2))
     
-    print(pftext)
+    return pftext

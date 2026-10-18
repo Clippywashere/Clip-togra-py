@@ -23,7 +23,7 @@ def nihilist_encrypt():
             if i in j:
                 ctext += str((polybiussquare.index(j) +1)*10 + j.index(i) +1 +key_numbers[count%len(key_25)]) +" "
                 count += 1
-    print(ctext)
+    return ctext
 
 def nihilist_decrypt():
     polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
@@ -58,4 +58,4 @@ def nihilist_decrypt():
     for i in unkeyed_nihi_list:
         ptext += polybiussquare[(i //10) -1][(i %10) -1]
 
-    print(ptext)
+    return ptext
