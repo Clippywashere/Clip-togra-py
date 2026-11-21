@@ -1,7 +1,8 @@
-def morse_encrypt():
-    ptext = input("Enter plaintext: ").upper()
+def morse_encrypt(chaining,ptext,keys):
     ctext = str()
     alpha_morse = {"A":".-","B":"-...","C":"-.-.","D":"-..","E":".","F":"..-.","G":"--.","H":"....","I":"..","J":".---","K":"-.-","L":".-..","M":"--","N":"-.","O":"---","P":".--.","Q":"--.-","R":".-.","S":"...","T":"-","U":"..-","V":"...-","W":".--","X":"-..-","Y":"-.--","Z":"--.."}
+
+    ptext = ptext.upper()
 
     for i in ptext:
         if i in alpha_morse:
@@ -12,12 +13,12 @@ def morse_encrypt():
 
     return ctext
 
-def morse_decrypt():
+def morse_decrypt(chaining,ctext,keys):
     #TODO: refactor to make it cleaner
-
-    ctext = input("Enter ciphertext: ").upper()
     ptext = str()
     morse_alpha = {".-":"A","-...":"B","-.-.":"C","-..":"D",".":"E","..-.":"F","--.":"G","....":"H","..":"I",".---":"J","-.-":"K",".-..":"L","--":"M","-.":"N","---":"O",".--.":"P","--.-":"Q",".-.":"R","...":"S","-":"T","..-":"U","...-":"V",".--":"W","-..-":"X","-.--":"Y","--..":"Z","":""}
+
+    ctext = ctext.upper()
 
     temp = str()
     count = 0
@@ -36,3 +37,9 @@ def morse_decrypt():
     ptext += morse_alpha[temp]
 
     return ptext
+
+def morse_driver(mode,chaining,itext,keys):
+    if mode == 1:
+        return morse_encrypt(chaining,itext,keys)
+    else:
+        return morse_decrypt(chaining,itext,keys)

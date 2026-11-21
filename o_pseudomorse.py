@@ -1,6 +1,6 @@
 from random import randint
 
-def pseudomorse_encrypt():
+def pseudomorse_encrypt(chaining,ptext,keys):
     prob_morse = [1,1,2,2,2,2,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4]
     one_lettered_morse = [".","-"]
     two_lettered_morse = [".-","-.","..","--"]
@@ -9,7 +9,6 @@ def pseudomorse_encrypt():
     c1text = str()
     cftext = str()
     temp = list()
-    ptext = input("Enter plaintext: ")
 
     for i in ptext:
         if i != " ":
@@ -35,10 +34,9 @@ def pseudomorse_encrypt():
 
     return cftext
 
-def pseudomorse_decrypt():
+def pseudomorse_decrypt(chaining,ctext,keys):
     p1text = str()
     pftext = str()
-    ctext = input("Enter ciphertext: ")
 
     for i in ctext:
         if i != " ":
@@ -48,3 +46,9 @@ def pseudomorse_decrypt():
         pftext += chr(int(p1text[8*j:8*(j +1)],2))
     
     return pftext
+
+def pseudomorse_driver(mode,chaining,itext,keys):
+    if mode == 1:
+        return pseudomorse_encrypt(chaining,itext,keys)
+    else:
+        return pseudomorse_decrypt(chaining,itext,keys)

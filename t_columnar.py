@@ -1,20 +1,23 @@
 from random import randint
 from math import ceil
+from constructors_and_validators import input_validator
 ab_capital = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
-def columnar_encrypt():
-    type_choice = int(input("Enter choice. 1 for regular, 2 for irregular: "))
-    ptext = input("Enter plaintext: ").upper()
-    key = input("Enter key: ").upper()
+def columnar_encrypt(chaining,ptext,keys):
     keylength = int()
     grid = list()
     transposed_grid = list()
     ctext = str()
 
-    for i in key:
-        if i.isalpha():
-            grid.append(i)
-            keylength += 1
+    if chaining == 0:
+        type_choice = int(input("Enter choice. 1 for regular, 2 for irregular: "))
+        key = input("Enter key: ")
+    else:
+        type_choice = int(keys[0])
+        key = keys[1]
+
+    key = input_validator(key)
+    keylength = len(key)
 
     count = 0
     if type_choice == 1:
@@ -72,3 +75,9 @@ def columnar_decrypt():
     count = 0
     while count < ptextlength:
         break
+
+def columnar_driver(mode,chaining,itext,keys):
+    if mode == 1:
+        return columnar_encrypt(chaining,itext,keys)
+    else:
+        return columnar_decrypt(chaining,itext,keys)

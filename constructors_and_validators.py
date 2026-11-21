@@ -23,40 +23,45 @@ def alphabet_constructor():
     
     return alpha_capital
 
-def polybiussquare_constructor():
-    alpha_choice = int(input("Enter choice. 1 for std alpha (J->I), 2 for std alpha (K->C), 3 for keyed alpha, 4 for custom alpha: "))
-    match alpha_choice:
-        case 1:
-            alpha_25 = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
-            excluded_letter = "J"
-            replacement_letter = "I"
-        case 2:
-            alpha_25 = "ABCDEFGHIJLMNOPQRSTUVWXYZ"
-            excluded_letter = "K"
-            replacement_letter = "C"
-        case 3:
-            key = (input("Enter key: ")).upper()
-            excluded_letter = (input("Enter letter to be excluded: ")).upper()
-            replacement_letter = (input("Enter letter to replace excluded letter: ")).upper()
-            key_letter_list = [excluded_letter]
-            alpha_25 = str()
+def polybiussquare_constructor(chaining,keys):
+    if chaining == 0:
+        alpha_choice = int(input("Enter choice. 1 for std alpha (J->I), 2 for std alpha (K->C), 3 for keyed alpha, 4 for custom alpha: "))
+        match alpha_choice:
+            case 1:
+                alpha_25 = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
+                excluded_letter = "J"
+                replacement_letter = "I"
+            case 2:
+                alpha_25 = "ABCDEFGHIJLMNOPQRSTUVWXYZ"
+                excluded_letter = "K"
+                replacement_letter = "C"
+            case 3:
+                key = (input("Enter key: ")).upper()
+                excluded_letter = (input("Enter letter to be excluded: ")).upper()
+                replacement_letter = (input("Enter letter to replace excluded letter: ")).upper()
+                key_letter_list = [excluded_letter]
+                alpha_25 = str()
 
-            for i in key:
-                if i.isalpha():
-                    if i not in key_letter_list and i == excluded_letter:
-                        alpha_25 += replacement_letter
-                        key_letter_list.append(replacement_letter)
-                        key_letter_list.append(i)
-                    elif i not in key_letter_list:
-                        alpha_25 += i
-                        key_letter_list.append(i)
-            for j in ab_capital:
-                if j not in key_letter_list:
-                    alpha_25 += j
-        case 4:
-            alpha_25 = (input("Enter custom alphabet: ")).upper()
-            excluded_letter = (input("Enter letter to be excluded: ")).upper()
-            replacement_letter = (input("Enter letter to replace excluded letter: ")).upper()
+                for i in key:
+                    if i.isalpha():
+                        if i not in key_letter_list and i == excluded_letter:
+                            alpha_25 += replacement_letter
+                            key_letter_list.append(replacement_letter)
+                            key_letter_list.append(i)
+                        elif i not in key_letter_list:
+                            alpha_25 += i
+                            key_letter_list.append(i)
+                for j in ab_capital:
+                    if j not in key_letter_list:
+                        alpha_25 += j
+            case 4:
+                alpha_25 = (input("Enter custom alphabet: ")).upper()
+                excluded_letter = (input("Enter letter to be excluded: ")).upper()
+                replacement_letter = (input("Enter letter to replace excluded letter: ")).upper()
+    else:
+        alpha_25 = keys[0]
+        excluded_letter = keys[1]
+        replacement_letter = keys[2]
     
     polybiussquare = [[],[],[],[],[]]
     for i in range(5):
@@ -85,3 +90,26 @@ def polybius_input_validator(inp,excluded_letter,replacement_letter):
                 out += i
 
     return out
+
+def chain_validator(chain):
+#TODO: Write a complete validator covering all the cases, IMPORTANT!!!
+    valid = True
+    status = 0
+    count = 0
+    for i in chain + " ":
+        if i in "[]()":
+            count += 1
+            if i == "[":
+                status += 1
+            elif i == "(":
+                status += 2
+            elif i == "]":
+                status -= 1
+            elif i == ")":
+                status -= 2
+
+            if count%2 == 0:
+                if status != 0:
+                    valid = False
+
+    return valid

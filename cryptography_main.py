@@ -1,95 +1,64 @@
 #cryptography main
 
-ab_capital = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+path_choice = int(input("Enter choice. 1 for encryption, 2 for decryption, 3 for tools, 4 for chaining: "))
 
-import s_morse
-import s_affine
-import s_tapcode
-import s_playfair
-import s_book
-import s_nihilist
-import m_bifid
-import o_pseudomorse
-import t_columnar
-import l_frequency
-
-path_choice = int(input("Enter choice. 1 for encryption, 2 for decryption, 3 for tools: "))
-
-if path_choice == 1:
+if path_choice == 1 or path_choice == 2:
+    chaining = 0
     type_choice = int(input("Enter choice. 1 for substitution, 2 for transposition, 3 for mixed, 4 for other: "))
     if type_choice == 1:
         cipher_choice = int(input("Enter choice. 1 for morse, 2 for affine, 3 for tapcode, 4 for playfair, 5 for book, 6 for nihilist: "))
+        if path_choice == 1:
+            itext = input("Enter plaintext: ")
+        else: itext = input("Enter ciphertext: ")
+        keys = list()
         match cipher_choice:
             case 1:
-                print(s_morse.morse_encrypt())
+                from s_morse import morse_driver
+                result = morse_driver
             case 2:
-                print(s_affine.affine_encrypt())
+                from s_affine import affine_driver
+                result = affine_driver
             case 3:
-                print(s_tapcode.tapcode_encrypt())
+                from s_tapcode import tapcode_driver
+                result = tapcode_driver
             case 4:
-                print(s_playfair.playfair_encrypt())
+                from s_playfair import playfair_driver
+                result = playfair_driver
             case 5:
-                print(s_book.book_encrypt())
+                from s_book import book_driver
+                result = book_driver
             case 6:
-                print(s_nihilist.nihilist_encrypt())
+                from s_nihilist import nihilist_driver
+                result = nihilist_driver
             case _:
                 print("Invalid cipher choice")
     elif type_choice == 2:
         cipher_choice = int(input("Enter choice. 1 for columnar: "))
         match cipher_choice:
             case 1:
-                print(t_columnar.columnar_encrypt())
+                from t_columnar import columnar_driver
+                result = columnar_driver
             case _:
                 print("Invalid cipher choice")
     elif type_choice == 3:
         cipher_choice = int(input("Enter choice. 1 for bifid: "))
         match cipher_choice:
             case 1:
-                print(m_bifid.bifid_encrypt())
+                from m_bifid import bifid_driver
+                result = bifid_driver
             case _:
                 print("Invalid cipher choice")
     elif type_choice == 4:
         cipher_choice = int(input("Enter choice. 1 for pseudomorse: "))
         match cipher_choice:
             case 1:
-                print(o_pseudomorse.pseudomorse_encrypt())
+                from o_pseudomorse import pseudomorse_driver
+                result = pseudomorse_driver
             case _: print("Invalid cipher choice")
     else: print("Invalid type choice")
-elif path_choice == 2:
-    type_choice = int(input("Enter choice. 1 for substitution, 2 for transposition, 3 for mixed, 4 for other: "))
-    if type_choice == 1:
-        cipher_choice = int(input("Enter choice. 1 for morse, 2 for affine, 3 for tapcode, 4 for playfair, 5 for book, 6 for nihilist: "))
-        match cipher_choice:
-            case 1:
-                print(s_morse.morse_decrypt())
-            case 2:
-                print(s_affine.affine_decrypt())
-            case 3:
-                print(s_tapcode.tapcode_decrypt())
-            case 4:
-                print(s_playfair.playfair_decrypt())
-            case 5:
-                print(s_book.book_decrypt())
-            case 6:
-                print(s_nihilist.nihilist_decrypt())
-            case _: print("Invalid cipher choice")
-    elif type_choice == 2:
-        pass
-    elif type_choice == 3:
-        cipher_choice = int(input("Enter choice. 1 for bifid: "))
-        match cipher_choice:
-            case 1:
-                print(m_bifid.bifid_decrypt())
-            case _:
-                print("Invalid cipher choice")
-    elif type_choice == 4:
-        cipher_choice = int(input("Enter choice. 1 for pseudomorse: "))
-        match cipher_choice:
-            case 1:
-                print(o_pseudomorse.pseudomorse_decrypt())
-            case _: print("Invalid cipher choice")
-    else: print("Invalid type choice")
+    print(result(path_choice,chaining,itext,keys))
 elif path_choice == 3:
+    import l_frequency
     tool_choice = int(input("Enter choice. 1 for freq analysis, 2 for freq matching: "))
     match tool_choice:
         case 1:
@@ -98,4 +67,7 @@ elif path_choice == 3:
             l_frequency.frequency_matcher()
         case _:
             print("Invalid tool choice")
+elif path_choice == 4:
+    import chainer
+    print(chainer.chainer())
 else: print("Invalid choice") 

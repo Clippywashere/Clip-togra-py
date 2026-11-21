@@ -1,8 +1,7 @@
 from constructors_and_validators import polybiussquare_constructor, polybius_input_validator
 
-def playfair_encrypt():
-    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
-    ptext = (input("Enter plaintext: ")).upper()
+def playfair_encrypt(chaining,ptext,keys):
+    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor(chaining,keys)
     ptext_25 = str()
     c1text = str()
     c1text_list = list()
@@ -50,11 +49,12 @@ def playfair_encrypt():
 
     return cftext
 
-def playfair_decrypt():
-    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
-    ctext = input("Enter ciphertext: ").upper()
+def playfair_decrypt(chaining,ctext ,keys):
+    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor(chaining,keys)
     p1text_list = list()
     pftext = str()
+
+    ctext = ctext.upper()
 
     count = 0
     for i in ctext:
@@ -86,3 +86,9 @@ def playfair_decrypt():
                     first_letter_row_index = int(5)
         
     return pftext
+
+def playfair_driver(mode,chaining,itext,keys):
+    if mode == 1:
+        return playfair_encrypt(chaining,itext,keys)
+    else:
+        return playfair_decrypt(chaining,itext,keys)

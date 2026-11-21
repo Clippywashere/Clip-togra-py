@@ -1,8 +1,7 @@
 from constructors_and_validators import polybiussquare_constructor, polybius_input_validator
 
-def tapcode_encrypt():
-    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
-    ptext = (input("Enter plaintext: ")).upper()
+def tapcode_encrypt(chaining,ptext,keys):
+    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor(chaining,keys)
     ptext_25 = str()
     ctext = str()
 
@@ -15,12 +14,13 @@ def tapcode_encrypt():
 
     return ctext
 
-def tapcode_decrypt():
-    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
-    ctext = (input("Enter ciphertext: ")).strip() + " "
+def tapcode_decrypt(chaining,ctext,keys):
+    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor(chaining,keys)
     ptext = str()
     temp = str()
     tap_list = list()
+
+    ctext = ctext.strip() + " "
 
     for i in ctext:
         if i == " ":
@@ -33,3 +33,9 @@ def tapcode_decrypt():
         ptext += polybiussquare[tap_list[j] -1][tap_list[j +1] -1]
 
     return ptext
+
+def tapcode_driver(mode,chaining,itext,keys):
+    if mode == 1:
+        return tapcode_encrypt(chaining,itext,keys)
+    else:
+        return tapcode_decrypt(chaining,itext,keys)

@@ -1,10 +1,13 @@
 import random
 
-def book_encrypt():
+def book_encrypt(chaining,ptext,keys):
     #TODO: Make the selector truly random for marginally better security
-
     words_list = list()
-    key = input("Enter key text: ").upper() + " "
+
+    if chaining == 0:
+        key = input("Enter key text: ")
+    else: key = keys[0]
+    key = key.upper() +" "
 
     temp = str()
     for i in key:
@@ -24,7 +27,7 @@ def book_encrypt():
 
     print("Available letters:", constrained_alphabet)
 
-    ptext = input("Enter plaintext: ").upper()
+    ptext = ptext.upper()
     ctext = str()
 
     for i in ptext:
@@ -39,12 +42,15 @@ def book_encrypt():
 
     return ctext
 
-def book_decrypt():
+def book_decrypt(chaining,ctext,keys):
     words_list = list()
-    key = input("Enter key text: ").upper() + " "
-    ctext = input("Enter ciphertext: ")
     ctext_list = list()
     ptext = str()
+
+    if chaining == 0:
+        key = input("Enter key text: ")
+    else: key = keys[0]
+    key = key.upper()
 
     temp = str()
     for i in key:
@@ -73,3 +79,9 @@ def book_decrypt():
             ptext += words_list[i -1][0]
 
     return ptext
+
+def book_driver(mode,chaining,itext,keys):
+    if mode == 1:
+        return book_encrypt(chaining,itext,keys)
+    else:
+        return book_decrypt(chaining,itext,keys)

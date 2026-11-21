@@ -1,14 +1,17 @@
 from constructors_and_validators import polybiussquare_constructor, polybius_input_validator
 
-def nihilist_encrypt():
-    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
-    ptext = (input("Enter plaintext: ")).upper()
-    key = (input("Enter key: ")).upper()
+def nihilist_encrypt(chaining,ptext,keys):
+    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor(chaining,keys)
     ptext_25 = str()
     key_25 = str()
     key_numbers = list()
     ctext = str()
 
+    if chaining == 0:
+        key = (input("Enter key: "))
+    else:
+        key = keys[3]
+    
     ptext_25 = polybius_input_validator(ptext,excluded_letter,replacement_letter)
     key_25 = polybius_input_validator(key,excluded_letter,replacement_letter)
 
@@ -25,16 +28,20 @@ def nihilist_encrypt():
                 count += 1
     return ctext
 
-def nihilist_decrypt():
-    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor()
-    ctext = (input("Enter ciphertext: ")).strip() +" "
-    key = input("Enter key: ").upper()
+def nihilist_decrypt(chaining,ctext,keys):
+    polybiussquare, excluded_letter, replacement_letter = polybiussquare_constructor(chaining,keys)
     key_25 = str()
     nihi_list = list()
     unkeyed_nihi_list = list()
     key_numbers = list()
     ptext = str()
     temp = str()
+
+    if chaining == 0:
+        key = input("Enter key: ")
+    else:
+        key = keys[3]
+    ctext = ctext.strip() + " "
 
     key_25 = polybius_input_validator(key,excluded_letter,replacement_letter)
 
@@ -59,3 +66,9 @@ def nihilist_decrypt():
         ptext += polybiussquare[(i //10) -1][(i %10) -1]
 
     return ptext
+
+def nihilist_driver(mode,chaining,itext,keys):
+    if mode == 1:
+        return nihilist_encrypt(chaining,itext,keys)
+    else:
+        return nihilist_decrypt(chaining,itext,keys)
