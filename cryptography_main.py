@@ -56,7 +56,10 @@ if path_choice == 1 or path_choice == 2:
                 result = pseudomorse_driver
             case _: print("Invalid cipher choice")
     else: print("Invalid type choice")
-    print(result(path_choice,chaining,itext,keys))
+    try:
+        print(result(path_choice,chaining,itext,keys))
+    except:
+        pass
 elif path_choice == 3:
     import l_frequency
     tool_choice = int(input("Enter choice. 1 for freq analysis, 2 for freq matching: "))

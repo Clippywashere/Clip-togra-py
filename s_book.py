@@ -7,7 +7,7 @@ def book_encrypt(chaining,ptext,keys):
     if chaining == 0:
         key = input("Enter key text: ")
     else: key = keys[0]
-    key = key.upper() +" "
+    key = key.upper() + " "
 
     temp = str()
     for i in key:
@@ -50,7 +50,7 @@ def book_decrypt(chaining,ctext,keys):
     if chaining == 0:
         key = input("Enter key text: ")
     else: key = keys[0]
-    key = key.upper()
+    key = key.upper() + " "
 
     temp = str()
     for i in key:

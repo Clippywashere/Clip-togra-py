@@ -24,7 +24,7 @@ def columnar_encrypt(chaining,ptext,keys):
         ptextlength = 0
         for i in ptext:
             if i.isalpha():
-                grid[count %keylength] += i
+                grid[count %keylength].append(i)
                 count += 1
                 ptextlength += 1
         for j in range(keylength -(ptextlength %keylength) +1):
@@ -80,4 +80,5 @@ def columnar_driver(mode,chaining,itext,keys):
     if mode == 1:
         return columnar_encrypt(chaining,itext,keys)
     else:
-        return columnar_decrypt(chaining,itext,keys)
+        pass
+        #return columnar_decrypt(chaining,itext,keys)
