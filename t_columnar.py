@@ -5,7 +5,6 @@ ab_capital = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q
 
 def columnar_encrypt(chaining,ptext,keys):
     keylength = int()
-    grid = list()
     transposed_grid = list()
     ctext = str()
 
@@ -18,6 +17,7 @@ def columnar_encrypt(chaining,ptext,keys):
 
     key = input_validator(key)
     keylength = len(key)
+    grid = list([]*keylength)
 
     count = 0
     if type_choice == 1:
@@ -34,7 +34,7 @@ def columnar_encrypt(chaining,ptext,keys):
     elif type_choice == 2:
         for i in ptext:
             if i.isalpha():
-                grid[count %keylength] += i
+                grid[count %keylength].append(i)
                 count += 1
     else: print("Invalid type choice")
 
