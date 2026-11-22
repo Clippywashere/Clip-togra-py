@@ -20,22 +20,17 @@ def columnar_encrypt(chaining,ptext,keys):
     grid = list([]*keylength)
 
     count = 0
+    for i in ptext:
+        if i.isalpha():
+            grid[count %keylength].append(i)
+            count += 1
     if type_choice == 1:
-        ptextlength = 0
-        for i in ptext:
-            if i.isalpha():
-                grid[count %keylength].append(i)
-                count += 1
-                ptextlength += 1
-        for j in range(keylength -(ptextlength %keylength) +1):
+        for j in range(keylength -(count %keylength) +1):
             if j != 0:
                 grid[count %keylength] += ab_capital[randint(0,25)]
                 count += 1
     elif type_choice == 2:
-        for i in ptext:
-            if i.isalpha():
-                grid[count %keylength].append(i)
-                count += 1
+        pass
     else: print("Invalid type choice")
 
     for i in ab_capital:
