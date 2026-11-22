@@ -25,7 +25,8 @@ def columnar_encrypt(chaining,ptext,keys):
             grid[count %keylength].append(i)
             count += 1
     if type_choice == 1:
-        for j in range(keylength -(count %keylength) +1):
+        ptextlength = count
+        for j in range(keylength -(ptextlength %keylength) +1):
             if j != 0:
                 grid[count %keylength] += ab_capital[randint(0,25)]
                 count += 1
